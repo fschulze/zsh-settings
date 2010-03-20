@@ -1,0 +1,14 @@
+export HISTFILE=~/.zsh_history
+export SAVEHIST=18000
+export HISTSIZE=20000
+setopt share_history
+setopt inc_append_history
+setopt extended_history
+setopt hist_no_store
+setopt hist_reduce_blanks
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt hist_expire_dups_first
+setopt hist_fcntl_lock
+setopt hist_find_no_dups
+setopt hist_save_no_dups
