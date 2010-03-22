@@ -17,3 +17,6 @@ function pmate () {
     setopt local_options no_nomatch
     mate *.cfg CHANGES* bin/ cfgs/ etc/ src/ templates/ production/ $*
 }
+
+source ~/.zsh/jump.zsh
+alias j="jump"
