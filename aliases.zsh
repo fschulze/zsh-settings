@@ -20,3 +20,18 @@ function pmate () {
 
 source ~/.zsh/jump.zsh
 alias j="jump"
+
+function eggpath() {
+    local name=$1;
+    shift;
+    local files=$*;
+    if [ -z $files ]; then
+        if [ -e ./bin/instance* ]; then
+            local files="$files ./bin/instance*";
+        fi
+        if [ -e ./bin/client* ]; then
+            local files="$files ./bin/client*";
+        fi
+    fi
+    grep -o -E "/.*$name.*.egg" $files | sort -u;
+}
