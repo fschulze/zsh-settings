@@ -4,8 +4,8 @@ autoload -U promptinit && promptinit
 function parse_git_branch () {
     branch=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
     if [[ "$branch" != "" ]]; then
-        unstaged_changes=($(git status -s | egrep '^.[DMA]' | wc -l))
-        staged_changes=($(git status -s | egrep '^[DMA].' | wc -l))
+        unstaged_changes=($(git status -s | egrep '^.[DMAU]' | wc -l))
+        staged_changes=($(git status -s | egrep '^[DMAU].' | wc -l))
         if [[ $unstaged_changes != 0 ]]; then
             if [[ $staged_changes != 0 ]]; then
                 echo "on %{$fg_bold[yellow]%}$branch%{$reset_color%}"
