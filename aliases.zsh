@@ -15,7 +15,7 @@ alias srcdiff="diff -ru -x .svn -x .git -x *.py[co] -x *.egg-info"
 
 function pmate () {
     setopt local_options no_nomatch
-    mate *.cfg CHANGES* bin/ cfgs/ etc/ src/ templates/ production/ $*
+    mate *.cfg CHANGES* bin/ cfgs/ docs/ etc/ templates/ production/ $*
 }
 
 source ~/.zsh/jump.zsh
