@@ -2,6 +2,8 @@
 export MANPATH=/opt/local/share/man:$MANPATH
 # Finished adapting your MANPATH environment variable for use with MacPorts.
 
+export CLICOLOR=true
+
 # exclude Mac OS X crap from tar files
 export COPYFILE_DISABLE=true
 
