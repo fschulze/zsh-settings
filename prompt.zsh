@@ -46,7 +46,7 @@ function parse_branch () {
 }
 
 current_time='%{$fg[blue]%}[%*]%{$reset_color%}'
-current_user='%{$fg[green]%}%n%{$reset_color%}'
+current_user='%{$fg[green]%}%n@%m%{$reset_color%}'
 current_path='%{$fg[red]%}${PWD/#$HOME/~}%{$reset_color%}'
 current_branch='$(parse_branch)'
 
