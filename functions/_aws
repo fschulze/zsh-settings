@@ -1,0 +1,41 @@
+#compdef aws
+
+if [[ "$words[1]" != "$_cache_aws_cmd" ]]; then
+    _cache_aws_cmd="$words[1]"
+fi
+
+_arguments -C \
+'(-h --help)'{-h,--help}'[Show help]' \
+'(-c --config)'{-c,--config}'[Use specified config file]:config:_files' \
+'(-v --version)'{-v,--version}'[Print version]' \
+'*::command:->command' \
+&& return 0
+
+case $state in
+	command)
+	if ((CURRENT == 1)); then
+		state=subcommands
+	elif ((CURRENT == 2)); then
+		state=servername
+	else
+		state=fabriccommand
+	fi
+	;;
+esac
+
+case $state in
+	subcommands)
+	cmds=($("$_cache_aws_cmd" help -z))
+	_describe -t commands 'aws commands' cmds
+	;;
+	servername)
+	serverlist=($("$_cache_aws_cmd" help "$words[1]" -z))
+	_describe -t commands 'available servers' serverlist
+	;;
+	fabriccommand)
+	if [[ "$words[1]" == "do" ]]; then
+		fabriclist=($("$_cache_aws_cmd" do "$words[2]" -l | tail -n +3 | awk '{print $1}'))
+		_describe -t commands 'fabric commands' fabriclist
+	fi
+	;;
+esac
