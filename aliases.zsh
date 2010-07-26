@@ -38,12 +38,8 @@ function eggpath() {
     shift;
     local files=$*;
     if [ -z $files ]; then
-        if [ -e ./bin/instance* ]; then
-            local files="$files ./bin/instance*";
-        fi
-        if [ -e ./bin/client* ]; then
-            local files="$files ./bin/client*";
-        fi
+        local files="$files ./bin/instance* ./bin/client*";
     fi
-    grep -o -E "/.*$name.*.egg" $files | sort -u;
+    setopt local_options null_glob;
+    grep -o -E "/.*$name.*.egg" ${~files} | sort -u;
 }
