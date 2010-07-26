@@ -47,3 +47,5 @@ function eggpath() {
 function pman () {
     man -t "${1}" | open -f -a /Applications/Preview.app
 }
+
+alias ql="qlmanage -p"
