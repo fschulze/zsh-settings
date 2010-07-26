@@ -43,3 +43,7 @@ function eggpath() {
     setopt local_options null_glob;
     grep -o -E "/.*$name.*.egg" ${~files} | sort -u;
 }
+
+function pman () {
+    man -t "${1}" | open -f -a /Applications/Preview.app
+}
