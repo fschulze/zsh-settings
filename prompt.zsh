@@ -52,3 +52,4 @@ current_branch='$(parse_branch)'
 
 setopt prompt_subst
 export PROMPT="$current_time $current_user $current_path $current_branch$prompt_newline%# "
+precmd () {print -Pn "\e]0;%20<..<%/\a"}
