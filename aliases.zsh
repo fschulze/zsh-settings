@@ -15,6 +15,12 @@ alias srcgrep="grep --exclude \"*.pyc\" --exclude \".git\" --exclude \"*.svn-bas
 alias srcdiff="diff -ru -x .svn -x .git -x \*.py\[co\] -x \*.egg-info"
 alias failed_tests="pbpaste | grep 'test.*(' | cut -d\( -f1 | xargs | tr ' ' '\|'"
 
+function hl () {
+    hl="-------- $1 ---------------------------";
+    hl="$hl------------------------------------";
+    echo $hl[0,72];
+}
+
 function pmate () {
     setopt local_options no_nomatch
     mate *.txt *.cfg CHANGES* bin/ cfgs/ docs/ etc/ src/ templates/ production/ $*
