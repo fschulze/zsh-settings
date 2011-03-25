@@ -13,6 +13,7 @@ alias gs="git svn"
 alias jslint="java org.mozilla.javascript.tools.shell.Main /Users/fschulze/Development/jslint.js"
 alias srcgrep="grep --exclude \"*.pyc\" --exclude \".git\" --exclude \"*.svn-base\" --exclude \"all-wcprops\" --exclude \"entries\" --exclude \"*.tmp\" -r"
 alias srcdiff="diff -ru -x .svn -x .git -x \*.py\[co\] -x \*.egg-info"
+alias failed_tests="pbpaste | grep 'test.*(' | cut -d\( -f1 | xargs | tr ' ' '\|'"
 
 function pmate () {
     setopt local_options no_nomatch
