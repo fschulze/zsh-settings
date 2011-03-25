@@ -16,7 +16,7 @@ alias srcdiff="diff -ru -x .svn -x .git -x \*.py\[co\] -x \*.egg-info"
 
 function pmate () {
     setopt local_options no_nomatch
-    mate *.cfg CHANGES* bin/ cfgs/ docs/ etc/ src/ templates/ production/ $*
+    mate *.txt *.cfg CHANGES* bin/ cfgs/ docs/ etc/ src/ templates/ production/ $*
 }
 alias pm="pmate"
 
