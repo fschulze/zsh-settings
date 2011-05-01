@@ -38,12 +38,16 @@ function parse_svn_branch () {
 }
 
 function parse_branch () {
-    if [[ "$PROMPT_NO_BRANCH" == "" ]]; then
-        if git branch > /dev/null 2> /dev/null; then
-            parse_git_branch
-        elif svn info > /dev/null 2> /dev/null; then
-            parse_svn_branch
-        fi
+    if [[ "$PROMPT_NO_BRANCH" != "" ]]; then
+        return
+    fi
+    if git rev-parse --is-inside-work-tree > /dev/null 2> /dev/null; then
+        parse_git=$(git rev-parse --is-inside-work-tree)
+    fi
+    if test "$parse_git" != "false" && git branch > /dev/null 2> /dev/null; then
+        parse_git_branch
+    elif svn info > /dev/null 2> /dev/null; then
+        parse_svn_branch
     fi
 }
 
