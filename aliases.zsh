@@ -23,7 +23,7 @@ function hl () {
 
 function pmate () {
     setopt local_options no_nomatch
-    mate *.txt *.cfg CHANGES* bin/ cfgs/ docs/ etc/ src/ templates/ production/ $*
+    mate *.txt *.rst *.cfg bin/ cfgs/ docs/ etc/ src/ templates/ production/ $*
 }
 alias pm="pmate"
 
