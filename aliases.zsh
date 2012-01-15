@@ -50,7 +50,7 @@ function eggpath() {
         local files="$files ./bin/instance* ./bin/client*";
     fi
     setopt local_options null_glob;
-    grep -o -i -E "/.*$name.*.egg" ${~files} | sort -u;
+    grep -o -E "/.*$name.*.egg" ${~files} | sort -u;
 }
 
 function pman () {
