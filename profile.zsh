@@ -15,6 +15,8 @@ export EDITOR=mate_wait
 
 export PAGER=less
 
+export MANPAGER='man2html | bcat'
+
 export PYTHONSTARTUP=~/.pythonrc.py
 
 # MacPorts Installer addition on 2009-08-30_at_02:26:17: adding an appropriate PATH variable for use with MacPorts.
