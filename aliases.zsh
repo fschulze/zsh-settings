@@ -15,7 +15,8 @@ alias srcgrep="grep --exclude \"*.pyc\" --exclude \".git\" --exclude \"*.svn-bas
 alias srcdiff="diff -ru -x .svn -x .git -x \*.py\[co\] -x \*.egg-info"
 # alias failed_tests="pbpaste | grep 'test.*(' | cut -d\( -f1 | xargs | tr ' ' '\|'"
 # alias failed_tests="pbpaste | egrep '^  (test.*\(|/.*\.txt)' | cut -d\( -f1 | sed 's,.*/,,' | xargs | tr ' ' '\|' | xargs -J% bin/alltests -v -v -v -t '%'"
-alias failed_tests="pbpaste | grep 'test.*(' | awk '{print \$1 \".*\" \$2}' | xargs | tr ' ' '\|'"
+# alias failed_tests="pbpaste | grep 'test.*(' | awk '{print \$1 \".*\" \$2}' | xargs | tr ' ' '\|'"
+alias failed_tests="pbpaste | egrep '^ +(test.*\(|/.*\.txt)' | cut -d\( -f1 | sed 's,.*/,,' | xargs | tr ' ' '\|'"
 
 function hl () {
     hl="-------- $1 ---------------------------";
