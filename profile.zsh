@@ -13,6 +13,10 @@ export DISPLAY=:0.0
 
 export EDITOR=mate_wait
 
+export LS_OPTIONS="--color=auto"
+
+eval $(/opt/local/bin/gdircolors $HOME/.zsh/dir_colors)
+
 export PAGER=less
 
 export MANPAGER='man2html | bcat'

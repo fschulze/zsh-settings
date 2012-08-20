@@ -1,7 +1,7 @@
 #/bin/zsh
-alias ls="ls -w"
-alias l="ls -lhw"
-alias ll="ls -lhaw"
+alias ls="gls --color=auto"
+alias l="gls --color -lh"
+alias ll="gls --color -lha"
 alias ..="cd .."
 alias ...="cd ..; cd .."
 alias vi="vim"
