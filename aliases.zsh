@@ -10,6 +10,7 @@ alias d="develop"
 alias g="git"
 alias m="mate"
 alias gs="git svn"
+alias s="subl"
 alias jslint="java org.mozilla.javascript.tools.shell.Main /Users/fschulze/Development/jslint.js"
 alias srcgrep="grep --exclude \"*.pyc\" --exclude \".git\" --exclude \"*.svn-base\" --exclude \"all-wcprops\" --exclude \"entries\" --exclude \"*.tmp\" -r"
 alias srcdiff="diff -ru -x .svn -x .git -x \*.py\[co\] -x \*.egg-info"
@@ -28,7 +29,32 @@ function pmate () {
     setopt local_options no_nomatch
     mate *.txt *.rst *.cfg bin/ cfgs/ docs/ etc/ src/ templates/ production/ $*
 }
-alias pm="pmate"
+
+function psubl () {
+    if test ! -e default.sublime-project && dialog --defaultno --title "Create Project" --backtitle "There is no Sublime Text Project File in the current directory" --yesno "Create Sublime Text Project File?" 7 60; then
+        cat > default.sublime-project <<"_END_"
+{
+    "folders": [
+        {
+            "path": ".",
+            "file_exclude_patterns": [
+                "*.sublime-workspace", ".installed.cfg", ".mr.developer.cfg"
+            ],
+            "folder_exclude_patterns": [
+                "*.egg-info", "coverage", "develop-eggs", "eggs", "parts",
+                "temp", "tmp", "var"
+            ]
+        }
+    ]
+}
+_END_
+    fi
+    if test -e default.sublime-project; then
+        subl --project default.sublime-project
+    fi
+}
+
+alias pm="psubl"
 
 function dmate () {
     setopt local_options no_nomatch

@@ -11,7 +11,7 @@ export CVS_RSH=ssh
 
 export DISPLAY=:0.0
 
-export EDITOR=mate_wait
+export EDITOR="subl -w -n"
 
 export LS_OPTIONS="--color=auto"
 
