@@ -58,4 +58,15 @@ function pman () {
     man -t "${1}" | open -f -a /Applications/Preview.app
 }
 
+function cherries {
+    for arg in $*; do
+        for ticket in $( echo $arg | tr '-' ' ' ); do
+            for branch in $( git branch -r | grep $ticket ); do
+                hl $branch
+                git cherry -v master $branch
+            done
+        done
+    done
+}
+
 alias ql="qlmanage -p"
