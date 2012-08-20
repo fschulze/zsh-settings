@@ -1,4 +1,4 @@
-fpath=(~/.zsh/functions $fpath)
+fpath=($HOME/.zsh/functions $fpath)
 
 autoload -U colors && colors
 autoload -U compinit && compinit

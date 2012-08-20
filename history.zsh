@@ -1,4 +1,4 @@
-export HISTFILE=~/.zsh_history
+export HISTFILE=$HOME/.zsh_history
 export SAVEHIST=18000
 export HISTSIZE=20000
 setopt share_history

@@ -66,7 +66,7 @@ function dmate () {
     mate *.cfg CHANGES* bin/ cfgs/ docs/ etc/ ${=sources} templates/ production/ $*
 }
 
-source ~/.zsh/jump.zsh
+source $HOME/.zsh/jump.zsh
 alias j="jump"
 
 function eggpath() {
