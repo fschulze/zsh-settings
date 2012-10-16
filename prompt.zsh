@@ -4,19 +4,35 @@ autoload -U promptinit && promptinit
 function parse_git_branch () {
     branch=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
     if [[ "$branch" != "" ]]; then
-        unstaged_changes=($(git status -s | egrep '^.[DMAU]' | wc -l))
-        staged_changes=($(git status -s | egrep '^[DMAU].' | wc -l))
+        git_status=$(git status -s -b)
+        unstaged_changes=($(echo $git_status | tail -n+2 | egrep '^.[DMAU]' | wc -l))
+        staged_changes=($(echo $git_status | tail -n+2 | egrep '^[DMAU].' | wc -l))
+        echo $git_status | head -n 1 | egrep -q '\[.*ahead.*\]$'
+        ahead=($?)
+        echo $git_status | head -n 1 | egrep -q '\[.*behind.*\]$'
+        behind=($?)
+        remote_status=''
+        if [[ $ahead == 0 && $behind == 0 ]]; then
+            remote_status='(≷)'
+        else
+            if [[ $ahead == 0 ]]; then
+                remote_status='(>)'
+            fi
+            if [[ $behind == 0 ]]; then
+                remote_status='(<)'
+            fi
+        fi
         if [[ $unstaged_changes != 0 ]]; then
             if [[ $staged_changes != 0 ]]; then
-                echo "on %{$fg_bold[yellow]%}$branch%{$reset_color%}"
+                echo "on %{$fg_bold[yellow]%}$branch%{$reset_color%} $remote_status"
             else
-                echo "on %{$fg[red]%}$branch%{$reset_color%}"
+                echo "on %{$fg[red]%}$branch%{$reset_color%} $remote_status"
             fi
         else
             if [[ $staged_changes != 0 ]]; then
-                echo "on %{$fg[green]%}$branch%{$reset_color%}"
+                echo "on %{$fg[green]%}$branch%{$reset_color%} $remote_status"
             else
-                echo "on $branch"
+                echo "on $branch $remote_status"
             fi
         fi
     fi
