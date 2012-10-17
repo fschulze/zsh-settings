@@ -20,6 +20,10 @@ alias srcdiff="diff -ru -x .svn -x .git -x \*.py\[co\] -x \*.egg-info"
 # alias failed_tests="pbpaste | grep 'test.*(' | awk '{print \$1 \".*\" \$2}' | xargs | tr ' ' '\|'"
 alias failed_tests="pbpaste | egrep '^ +(test.*\(|/.*\.txt)' | cut -d\( -f1 | sed 's,.*/,,' | xargs | tr ' ' '\|'"
 
+h() {
+    if [ -z "$*" ]; then history 1; else history 1 | egrep "$@"; fi;
+}
+
 function hl () {
     hl="-------- $1 ---------------------------";
     hl="$hl------------------------------------";
