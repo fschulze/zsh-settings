@@ -2,6 +2,9 @@ autoload -U colors && colors
 autoload -U promptinit && promptinit
 
 function parse_git_branch () {
+    if git config --get zsh.hide-prompt > /dev/null; then
+        return;
+    fi;
     branch=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
     if [[ "$branch" != "" ]]; then
         git_status=$(git status -s -b)
