@@ -4,7 +4,7 @@ function jedit() {
 
 function jump() {
   NewDir=`egrep "^$1=" $HOME/.zsh/jumps | sed 's/^.*=//'`;
-  eval cd $NewDir
+  eval $NewDir
 }
 
 function _jump() {
