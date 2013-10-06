@@ -13,6 +13,8 @@ export DISPLAY=:0.0
 
 export EDITOR="subl -w -n"
 
+export LANG="en_US.UTF-8"
+
 export LS_OPTIONS="--color=auto"
 
 eval $(/usr/local/bin/gdircolors $HOME/.zsh/dir_colors)
