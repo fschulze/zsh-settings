@@ -1,5 +1,16 @@
 function jedit() {
-  vim $HOME/.zsh/jumps
+  if [[ "$1" != "" ]]; then
+    if [[ "$2" == "" ]]; then
+      echo "Usage: jedit [name <command>]"
+      return
+    fi
+    name=$1
+    shift
+    echo $name=$* >> ~/.zsh/jumps
+    echo Added $name to jumps file
+  else
+    vim $HOME/.zsh/jumps
+  fi
 }
 
 function jump() {
