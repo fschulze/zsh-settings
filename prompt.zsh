@@ -11,9 +11,9 @@ function parse_git_branch () {
         unstaged_changes=($(echo $git_status | tail -n+2 | egrep '^.[DMAU]' | wc -l))
         staged_changes=($(echo $git_status | tail -n+2 | egrep '^[DMAU].' | wc -l))
         echo $git_status | head -n 1 | egrep -q '\[.*ahead.*\]$'
-        ahead=($?)
+        ahead=$?
         echo $git_status | head -n 1 | egrep -q '\[.*behind.*\]$'
-        behind=($?)
+        behind=$?
         remote_status=''
         if [[ $ahead == 0 && $behind == 0 ]]; then
             remote_status='(≷)'
