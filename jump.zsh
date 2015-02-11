@@ -8,6 +8,7 @@ function jedit() {
     shift
     echo $name=$* >> ~/.zsh/jumps
     echo Added $name to jumps file
+    eval $*
   else
     vim $HOME/.zsh/jumps
   fi
