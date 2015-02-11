@@ -70,11 +70,19 @@ function parse_branch () {
     fi
 }
 
+function parse_venv () {
+    VENV=$(basename "$VIRTUAL_ENV")
+    if [[ "$VENV" != "" ]]; then
+        echo "($VENV) "
+    fi
+}
+
 current_time='%{$fg[blue]%}[%*]%{$reset_color%}'
 current_user='%{$fg[green]%}%n@%m%{$reset_color%}'
 current_path='%{$fg[red]%}${PWD/#$HOME/~}%{$reset_color%}'
 current_branch='$(parse_branch)'
+current_venv='$(parse_venv)'
 
 setopt prompt_subst
-export PROMPT="$current_time $current_user $current_path $current_branch$prompt_newline%# "
+export PROMPT="$current_time $current_user $current_path $current_venv$current_branch$prompt_newline%# "
 precmd () {print -Pn "\e]0;%20<..<%/\a"}
